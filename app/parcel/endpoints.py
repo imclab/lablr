@@ -79,5 +79,16 @@ class Parcel(Resource):
         except easypost.Error as e:
             abort(400, errorItem='parcel', message='Error creating label, parcel may be too large')
 
-        shipment.buy(rate=shipment.lowest_rate())
-        return {'postageUrl': shipment.postage_label.label_url}
+        lowest_rate = shipment.lowest_rate()
+
+        try:
+            shipment.buy(rate=lowest_rate)
+        except easypost.Error as e:
+            abort(400, errorItem='parcel', message='Error creating label, please try again')
+
+        return {
+            'postageUrl': shipment.postage_label.label_url,
+            'carrier': lowest_rate.carrier,
+            'service': lowest_rate.service,
+            'rate': lowest_rate.rate,
+        }

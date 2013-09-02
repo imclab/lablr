@@ -17,6 +17,9 @@ function LabelCtrl($scope, $http) {
         $scope.parcel.height = '';
         $scope.parcel.weight = '';
         $scope.labelImageUrl = data.postageUrl;
+        $scope.carrier = data.carrier;
+        $scope.service = data.service;
+        $scope.rate = data.rate;
         $scope.sending = false;
       }).
       error(function (data, status, headers, config) {

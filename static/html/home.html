@@ -33,6 +33,9 @@
   </form>
   <div class='container text-center' ng-cloak ng-show="labelImageUrl">
     <button class="btn btn-lg btn-primary" ng-click="resetLabel()">Make New Label</button>
+    <p>Carrier: {{ carrier }}</p>
+    <p>Service: {{ service }}</p>
+    <p>Rate: ${{ rate }}</p>
     <img ng-src="{{labelImageUrl}}"/>
   </div>
 </div> <!-- /container -->
