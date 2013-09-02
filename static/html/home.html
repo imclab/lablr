@@ -1,0 +1,38 @@
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Just fill out and submit!</h1>
+    <p>And lablr will do the rest. It's that easy.</p>
+  </div>
+</div>
+<div class="container" ng-controller="LabelCtrl">
+  <form class="parcel-form" ng-hide=labelImageUrl ng-submit="createLabel()">
+    <h2 class="parcel-form-heading">To Address:</h2>
+    <p>Name:<br>Foo Bar</p>
+    <p>Street:<br>387 Townsend St</p>
+    <p>State:<br>John</p>
+    <p>City:<br>San Francisco</p>
+    <p>Zip:<br>CA</p>
+    <p>Phone:<br>415-450-7890</p>
+    <h2 class="parcel-form-heading">From Address:</h2>
+    <p>Name:<br>John Smith</p>
+    <p>Street:<br>388 Townsend St</p>
+    <p>City:<br>San Francisco</p>
+    <p>State:<br>CA</p>
+    <p>Zip:<br>94107</p>
+    <p>Phone:<br>415-459-7890</p>
+    <h2 class="parcel-form-heading">Parcel Info:</h2>
+    <p>All dimensions go to one decimal point e.g. 10.2 Inches</p>
+    <input type="text" class="form-control" placeholder="Length(Inches)" ng-model="parcel.length">
+    <input type="text" class="form-control" placeholder="Width(Inches)" ng-model="parcel.width">
+    <input type="text" class="form-control" placeholder="Height(Inches)" ng-model="parcel.height">
+    <input type="text" class="form-control" placeholder="Weight(Ounces)" ng-model="parcel.weight">
+    <hr class="featurette-divider">
+    <p ng-cloak ng-show='sending'>Sending...</p>
+    <p ng-cloak ng-show='parcelErrorMessage'>{{ parcelErrorMessage }}</p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="sending">Submit</button>
+  </form>
+  <div class='container text-center' ng-cloak ng-show="labelImageUrl">
+    <button class="btn btn-lg btn-primary" ng-click="resetLabel()">Make New Label</button>
+    <img ng-src="{{labelImageUrl}}"/>
+  </div>
+</div> <!-- /container -->
